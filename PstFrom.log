@@ -1,0 +1,74 @@
+2025-02-09 10:12:47.226656 starting: opening PstFrom.log for logging
+2025-02-09 10:12:47.226656 starting PstFrom process
+2025-02-09 10:12:47.226656 dictionary-based spatial reference detected...
+2025-02-09 10:12:47.226656 starting: setting up dirs
+2025-02-09 10:12:47.226656 starting: removing existing new_d '..\pest_files'
+2025-02-09 10:12:47.259970 finished: removing existing new_d '..\pest_files' took: 0:00:00.033314
+2025-02-09 10:12:47.259970 starting: copying original_d '..\ws_2.5_10_closed' to new_d '..\pest_files'
+2025-02-09 10:12:47.935392 finished: copying original_d '..\ws_2.5_10_closed' to new_d '..\pest_files' took: 0:00:00.675422
+2025-02-09 10:12:47.936819 finished: setting up dirs took: 0:00:00.710163
+2025-02-09 10:12:47.972581 starting: adding pilotpoints type m style parameters for file(s) ['pomp.npf_k_layer2.txt']
+2025-02-09 10:12:47.973581 starting: using geostruct:name:struct1,nugget:0.0,structures:
+name:var1,contribution:1.0,a:100.0,anisotropy:1.0,bearing:0.0
+
+2025-02-09 10:12:47.973581 starting: loading array ..\pest_files\pomp.npf_k_layer2.txt
+2025-02-09 10:12:48.032694 finished: loading array ..\pest_files\pomp.npf_k_layer2.txt took: 0:00:00.059113
+2025-02-09 10:12:48.032694 loaded array '..\ws_2.5_10_closed\pomp.npf_k_layer2.txt' of shape (14342, 1)
+2025-02-09 10:12:48.072060 starting: writing array-style template file '..\pest_files\p_inst0_pilotpoints.csv.tpl'
+2025-02-09 10:12:48.073085 starting: setting up pilot point parameters
+2025-02-09 10:12:48.073085 'use_pp_zones' not set in pp_options, Setting to default value: [False]
+2025-02-09 10:12:48.073085 'spatial_reference' not set in pp_options, Setting to default value: [None]
+2025-02-09 10:12:48.073085 'minpts_interp' not set in pp_options, Setting to default value: [1]
+2025-02-09 10:12:48.073085 'fill_value' not set in pp_options, Setting to default value: [1.0]
+2025-02-09 10:12:48.073085 'lower_limit' not set in pp_options, Setting to default value: [1e-30]
+2025-02-09 10:12:48.073085 'upper_limit' not set in pp_options, Setting to default value: [1e+30]
+2025-02-09 10:12:48.073085 No spatial reference (containing cell spacing) passed.
+2025-02-09 10:12:48.073085 OK - using spatial reference in parent object.
+2025-02-09 10:12:48.115744 426 pilot point parameters created
+2025-02-09 10:12:48.115744 pilot point 'pargp':p,_,i,n,s,t,:,0
+2025-02-09 10:12:48.115744 finished: setting up pilot point parameters took: 0:00:00.042659
+2025-02-09 10:12:48.184499 starting: calculating factors for pargp=p_inst:0
+2025-02-09 10:12:48.184499 saving krige variance file:..\pest_files\p_inst0pp.var.dat
+2025-02-09 10:12:48.184499 saving krige factors file:..\pest_files\p_inst0pp.fac
+2025-02-09 10:13:13.902897 finished: calculating factors for pargp=p_inst:0 took: 0:00:25.718398
+2025-02-09 10:13:13.902897 starting: writing array-based template file '..\pest_files\p_inst0pp.dat.tpl'
+2025-02-09 10:13:13.902897 saving zone array ..\pest_files\p_inst0pp.dat.zone for tpl file ..\pest_files\p_inst0pp.dat.tpl
+2025-02-09 10:13:13.919458 finished: adding pilotpoints type m style parameters for file(s) ['pomp.npf_k_layer2.txt'] took: 0:00:25.946877
+2025-02-09 10:13:13.925455 starting: adding pilotpoints type m style parameters for file(s) ['pomp.sto_ss_layer2.txt']
+2025-02-09 10:13:13.925455 finished: using geostruct:name:struct1,nugget:0.0,structures:
+name:var1,contribution:1.0,a:100.0,anisotropy:1.0,bearing:0.0
+ took: 0:00:25.951874
+2025-02-09 10:13:13.925455 starting: loading array ..\pest_files\pomp.sto_ss_layer2.txt
+2025-02-09 10:13:13.988458 finished: loading array ..\pest_files\pomp.sto_ss_layer2.txt took: 0:00:00.063003
+2025-02-09 10:13:13.988458 loaded array '..\ws_2.5_10_closed\pomp.sto_ss_layer2.txt' of shape (14342, 1)
+2025-02-09 10:13:14.014964 starting: writing array-style template file '..\pest_files\p_inst1_pilotpoints.csv.tpl'
+2025-02-09 10:13:14.015969 starting: setting up pilot point parameters
+2025-02-09 10:13:14.050967 426 pilot point parameters created
+2025-02-09 10:13:14.050967 pilot point 'pargp':p,_,i,n,s,t,:,1
+2025-02-09 10:13:14.051967 finished: setting up pilot point parameters took: 0:00:00.035998
+2025-02-09 10:13:14.102488 reusing factors
+2025-02-09 10:13:14.103486 starting: writing array-based template file '..\pest_files\p_inst1pp.dat.tpl'
+2025-02-09 10:13:14.103486 saving zone array ..\pest_files\p_inst1pp.dat.zone for tpl file ..\pest_files\p_inst1pp.dat.tpl
+2025-02-09 10:13:14.114488 finished: adding pilotpoints type m style parameters for file(s) ['pomp.sto_ss_layer2.txt'] took: 0:00:00.189033
+2025-02-09 10:13:14.115487 starting: adding observations from output file head_0_200
+2025-02-09 10:13:14.115487 starting: adding observations from tabular output file '['head_0_200']'
+2025-02-09 10:13:14.116487 starting: reading list-style file: ..\pest_files\head_0_200
+2025-02-09 10:13:14.119488 finished: reading list-style file: ..\pest_files\head_0_200 took: 0:00:00.003001
+2025-02-09 10:13:14.119488 starting: building insfile for tabular output file head_0_200
+2025-02-09 10:13:14.126488 finished: building insfile for tabular output file head_0_200 took: 0:00:00.007000
+2025-02-09 10:13:14.126488 starting: adding observation from instruction file '..\pest_files\head_0_200.ins'
+2025-02-09 10:13:14.144488 finished: adding observation from instruction file '..\pest_files\head_0_200.ins' took: 0:00:00.018000
+2025-02-09 10:13:14.145486 finished: adding observations from tabular output file '['head_0_200']' took: 0:00:00.029999
+2025-02-09 10:13:14.145486 finished: adding observations from output file head_0_200 took: 0:00:00.029999
+2025-02-09 10:13:14.145486 starting: adding observations from output file head_2_200
+2025-02-09 10:13:14.145486 starting: adding observations from tabular output file '['head_2_200']'
+2025-02-09 10:13:14.145486 starting: reading list-style file: ..\pest_files\head_2_200
+2025-02-09 10:13:14.148487 finished: reading list-style file: ..\pest_files\head_2_200 took: 0:00:00.003001
+2025-02-09 10:13:14.149487 starting: building insfile for tabular output file head_2_200
+2025-02-09 10:13:14.156488 finished: building insfile for tabular output file head_2_200 took: 0:00:00.007001
+2025-02-09 10:13:14.156488 starting: adding observation from instruction file '..\pest_files\head_2_200.ins'
+2025-02-09 10:13:14.173488 finished: adding observation from instruction file '..\pest_files\head_2_200.ins' took: 0:00:00.017000
+2025-02-09 10:13:14.173488 finished: adding observations from tabular output file '['head_2_200']' took: 0:00:00.028002
+2025-02-09 10:13:14.173488 finished: adding observations from output file head_2_200 took: 0:00:00.028002
+2025-02-09 10:13:14.253005 forward_run line:pyemu.os_utils.run(r'..\exe\mf6.exe pomp.nam')
+
