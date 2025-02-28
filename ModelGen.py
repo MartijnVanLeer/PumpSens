@@ -9,7 +9,7 @@ name = 'pomp'
 #grid settings
 radius = 2000.0 #radius circle
 max_area = 50000 # max area at boundary
-zonearea = 25
+zonearea = 15
 zonedist = 350
 
 areas = [50000,10000,2500,1200, zonearea, zonearea]
@@ -29,7 +29,7 @@ ObsR = [200]#ObsL * SL #Afstand observatieput
 
 #temporal settings
 Tlen = 4 #Time (h)
-Tsteps = 100 #Timesteps 
+Tsteps = 50 #Timesteps 
 Tmult = 1.05 #Time multiplier
 
 VG,GI,gridprops,tri = MakeGrid(os.path.join('..', 'grid'), radius, max_area, areas, dists)

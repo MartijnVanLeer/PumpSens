@@ -12,7 +12,7 @@ mfexe = os.path.join('..','exe','mf6.exe')
 sen = os.path.join('..','exe','pestpp-sen')
 glm = os.path.join('..','exe','pestpp-glm')
 scenes = ['2.5_10_closed','10_10_closed','40_10_closed',
-          '2.5_10_open','10_10_open','2.5_10_open']
+          '2.5_10_open','10_10_open','40_10_open']
 for scene in scenes:
 
     OrgDir = os.path.join('..', f'ws_{scene}')
@@ -27,7 +27,7 @@ for scene in scenes:
     pf = pyemu.utils.PstFrom(OrgDir,PestDir, remove_existing=True,spatial_reference=sr)
     fix_k(PestDir, 'pomp.npf_k_layer2.txt')
 
-    ppdf = generate_points_within_circle(340,10)
+    ppdf = generate_points_within_circle(350,12.5)
     ppdf = ppdf[(ppdf.x.between(-200,200, inclusive= 'both')) & (ppdf.y >= -100)]
 
     pp_opt= {'try_use_ppu' : True, 'pp_space' : ppdf, 'search_radius' : 20, 'maxpts_interp' : 5, 'num_threads'  : 1 }

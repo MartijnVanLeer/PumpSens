@@ -1,5 +1,6 @@
 #%%
 import matplotlib.pyplot as plt
+import numpy as np
 
 def profile(ax, confined):
 # sky
@@ -43,51 +44,52 @@ def profile(ax, confined):
         alpha=0.7,
     )
     well = plt.Rectangle(
-        (-1.5, -30), width=3, height=35, fc=np.array([200, 200, 200]) / 255, zorder=1
+        (-1.5, -30), width=5, height=35, fc=np.array([200, 200, 200]) / 255, zorder=1
     )
 
     # Screen for the well:
     screen = plt.Rectangle(
-        (-1.5, -30),
-        width=3,
+        (-2.5, -30),
+        width=5,
         height=10,
-        fc=np.array([200, 200, 200]) / 255,
+        fc='red',
         alpha=1,
         zorder=2,
-        ec="k",
+        ec="black",
         ls="--",
     )
-    screen.set_linewidth(2)
+    screen.set_linewidth(1)
 
 
     obswell = plt.Rectangle(
-        (198.5, -30), width=3, height=35, fc=np.array([200, 200, 200]) / 255, zorder=1
+        (197.5, -30), width=5, height=35, fc=np.array([200, 200, 200]) / 255, zorder=1
     )
 
     obsscreen = plt.Rectangle(
-        (198.5, -30),
-        width=3,
+        (197.5, -30),
+        width=5,
         height=10,
-        fc=np.array([200, 200, 200]) / 255,
+        fc='lime',
         alpha=1,
         zorder=2,
-        ec="k",
+        ec = 'black',
+        # fc="lime",
         ls="--",
     )
-    obsscreen.set_linewidth(2)
+    obsscreen.set_linewidth(1)
 
 
     obsscreen2 = plt.Rectangle(
-        (198.5, -10),
-        width=3,
+        (197.5, -10),
+        width=5,
         height=10,
-        fc=np.array([200, 200, 200]) / 255,
+        fc='lime',
         alpha=1,
         zorder=2,
-        ec="k",
+        ec='black',
         ls="--",
     )
-    obsscreen2.set_linewidth(2)
+    obsscreen2.set_linewidth(1)
 
     ax.add_patch(obsscreen2)
     ax.add_patch(obsscreen)
@@ -106,18 +108,18 @@ def profile(ax, confined):
     return ax
 
 def add_text(ax,confined):
-    x = 87
+    x = 100
     if confined:
-        ax.text(x=x, y=2, s=r"No flow", c = 'white')
+        ax.text(x=x, y=2, s=r"No flow", c = 'white', va = 'center', ha = 'center')
     else: 
-        ax.text(x=x-20, y=2, s=r"Semiconfining layer", c = 'black')
+        ax.text(x=x, y=2, s=r"Semiconfining layer", c = 'black', va = 'center', ha = 'center')
 
-    ax.text(x=x, y=-33, s=r"No flow", c = 'white')
-    ax.text(x=x, y=-26, s=r"Aquifer 2")
-    ax.text(x=x, y=-16, s=r"Aquitard")
-    ax.text(x=x, y=-6, s=r"Aquifer 1")
-    ax.text(x=-20, y=7, s=r"Extraction well")
-    ax.text(x=160, y=7, s=r"Observation wells")
+    ax.text(x=x, y=-33, s=r"No flow", c = 'white', va = 'center', ha = 'center')
+    ax.text(x=x, y=-26, s=r"Aquifer 2", va = 'center', ha = 'center')
+    ax.text(x=x, y=-16, s=r"Aquitard", va = 'center', ha = 'center')
+    ax.text(x=x, y=-6, s=r"Aquifer 1", va = 'center', ha = 'center')
+    ax.text(x=0, y=7, s=r"Extraction well", va = 'center', ha = 'center')
+    ax.text(x=200, y=7, s=r"Observation wells", va = 'center', ha = 'center')
 
     ax.set_xlabel("Distance [m]")
     ax.set_ylabel("Relative height [m]")
@@ -151,9 +153,9 @@ def arrows_vertical(ax, well, width):
 def arrows_sf(ax,well, width):
     fac = 6.25
     x = 170 if well == 'obs' else 30
-    ly = -4 if well == 'obs' else -6
-    arrow1 = plt.Arrow(x,3,0,ly, width = width*fac, color = get_color(width), ec =  'black')
-    arrow2 = plt.Arrow(100,3,0,-5, width = width*fac, color = get_color(width), ec =  'black')
+    ly = 4 if well == 'obs' else 6
+    arrow1 = plt.Arrow(x,-2,0,ly, width = width*fac, color = get_color(width), ec =  'black')
+    arrow2 = plt.Arrow(100,-2,0,5, width = width*fac, color = get_color(width), ec =  'black')
     ax.add_patch(arrow1)
     ax.add_patch(arrow2)
     return ax
@@ -236,4 +238,78 @@ def plot():
     
     return fig, axs
 
-fig, axs = plot()
+def plot_arrowpic(ax, k1, time, confined):
+    ax = profile(ax, confined)
+
+    wmax = 10
+    wmid = 6
+    wmin = 3
+
+    if time == 'early':
+        if k1 == 2.5:
+            arrows_horizontal(ax, layer =2, width = wmax)
+            arrows_vertical(ax, well = 'obs', width = wmax)
+        elif k1 == 10:
+            arrows_horizontal(ax, layer =2, width = wmid)
+            arrows_vertical(ax, well = 'obs', width = wmid)
+            arrows_horizontal(ax, layer =0, width = wmid)
+            arrows_vertical(ax, well = 'pump', width = wmid)
+        elif k1 == 40:
+            arrows_horizontal(ax, layer =0, width = wmax)
+            arrows_vertical(ax, well = 'pump', width = wmax)
+    else:
+        if confined:
+
+    #confined
+    #lateK1 < K2
+            if k1 == 2.5:
+                arrows_horizontal(ax, layer =2, width = wmax)
+                arrows_vertical(ax, well = 'obs', width = wmax)
+                arrows_horizontal(ax, layer =0, width = wmin)
+                arrows_vertical(ax, well = 'pump', width = wmin)
+            elif k1 == 10:
+                arrows_horizontal(ax, layer =2, width = wmid)
+                arrows_vertical(ax, well = 'obs', width = wmid)
+                arrows_horizontal(ax, layer =0, width = wmid)
+                arrows_vertical(ax, well = 'pump', width = wmid)
+            elif k1 == 40:
+                arrows_horizontal(ax, layer =0, width = wmax)
+                arrows_vertical(ax, well = 'pump', width = wmax)
+                arrows_horizontal(ax, layer =2, width = wmin)
+                arrows_vertical(ax, well = 'obs', width = wmin)
+        else:
+    #semiconfined
+            if k1 == 2.5:
+                arrows_horizontal(ax, layer =2, width = wmax)
+                arrows_vertical(ax, well = 'obs', width = wmax)
+                arrows_horizontal(ax, layer =0, width = wmin, linestyle = 'dashed')
+                arrows_vertical(ax, well = 'pump', width = wmin)
+            elif k1 == 10:
+                arrows_horizontal(ax, layer =2, width = wmid)
+                arrows_vertical(ax, well = 'obs', width = wmid)
+                arrows_horizontal(ax, layer =0, width = wmin)
+                arrows_vertical(ax, well = 'pump', width = wmid)
+            elif k1 == 40:
+                arrows_horizontal(ax, layer =2, width = wmid)
+                arrows_vertical(ax, well = 'obs', width = wmid)
+                arrows_horizontal(ax, layer =0, width = wmid)
+                arrows_vertical(ax, well = 'pump', width = wmax)
+
+
+            arrows_sf(ax,'pump', width = wmin)
+            arrows_sf(ax,'obs', width = wmin)
+            
+    
+    return ax
+# fig, axs = plot()
+# #%%
+# fig,ax = plt.subplots(2)
+# fig.set_size_inches(8.25/2.54, 6)
+# ax[0] = profile(ax[0], True)
+# ax[0] = add_text(ax[0], True)
+# ax[1] = profile(ax[1], False)
+# ax[1] = add_text(ax[1], False)
+# fig.tight_layout()
+# # %%
+# fig,ax = plt.subplots()
+# plot_arrowpic(ax, 10,'late',True)
