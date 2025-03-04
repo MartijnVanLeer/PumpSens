@@ -62,7 +62,7 @@ for km in k:
 
         hds = gwft.output.head().get_alldata()
         t = np.array(gwft.output.head().get_times())
-        td = km[1] * t/(ss*ObsR[0])
+        td = km[1]/24 * t/(ss*ObsR[0]**2)
         for i in [0, 1]:
             lay = 2 if i == 1 else 0
             hmf[f'{km[0]}_{km[1]}_{TBC}_{lay}'] = -hds[:,lay,0, ObsCells[0]]*4*np.pi*km[1]/24*10/Q

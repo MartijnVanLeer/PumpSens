@@ -6,6 +6,7 @@ import matplotlib
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 import numpy as np
 from ConceptProfile import * 
+import os
 
 #Load jacobians ds (JcoToNetCDF.py)
 ds = xr.open_dataset(os.path.join('..','Results','jacobians.nc'))
@@ -14,13 +15,12 @@ ds = xr.open_dataset(os.path.join('..','Results','jacobians.nc'))
 timeid = np.array([0,15,-1])
 ds = ds.isel(time = timeid)
 
-
 l = 0
-tops = ['open']
-PlotFor = 'k'
+tops = ['closed']
+PlotFor = 'ss'
 
-vectors = True
-concepts = True
+vectors = False
+concepts = False
 
 cols = len (ds.time)
 cols = cols+1 if vectors else cols
@@ -79,7 +79,7 @@ for top in tops:# 'open']:
                     ax.set_ylim(ymin,ymax)
                     ax.set_aspect('equal')
                     if no == 0:
-                        ax.set_title(f'$t_d$ = {t:.1e}', fontsize = 8)  
+                        ax.set_title(f'$t_d$ = {t/24:.1e}', fontsize = 8)  
                     if no != len(tops)*3-1:
                         ax.set_xticks([])
                     else:

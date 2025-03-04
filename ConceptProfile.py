@@ -44,7 +44,7 @@ def profile(ax, confined):
         alpha=0.7,
     )
     well = plt.Rectangle(
-        (-1.5, -30), width=5, height=35, fc=np.array([200, 200, 200]) / 255, zorder=1
+        (-2.5, -30), width=5, height=35, fc=np.array([200, 200, 200]) / 255, zorder=1
     )
 
     # Screen for the well:
